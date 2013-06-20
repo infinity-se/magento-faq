@@ -12,6 +12,8 @@ class Infinity_Faq_Block_Adminhtml_Config_Edit_Tab_Form extends Mage_Adminhtml_B
           'label'     => Mage::helper('faq')->__('FAQ URL'),
           'required'  => true,
           'name'      => 'faq_url',
+      	  'disabled' => true,
+      	  'after_element_html' => '<small>FAQ Url is not editable in this version.</small>',
 	  ));
       
       $fieldset->addField('email_submit', 'text', array(

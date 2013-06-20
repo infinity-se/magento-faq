@@ -96,7 +96,7 @@ class Infinity_Faq_Block_Details extends Mage_Core_Block_Template
     	$cookie = Mage::getSingleton('core/cookie');
     	$helpful = $cookie->get('helpful'.$id);
     	
-    	if($helpful == 'helpful' || $status == '2'){
+    	if(is_string($helpful) || $status == '2'){
     		return true;
     	}else{
     		return false;

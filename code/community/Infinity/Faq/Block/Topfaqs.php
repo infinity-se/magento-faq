@@ -14,10 +14,14 @@ class Infinity_Faq_Block_Topfaqs extends Mage_Core_Block_Abstract implements Mag
 	{
 		$faqs = $this->_getTopFaqs();
 		
+		$html = '<h3>Top FAQs</h3>';
+		
 		foreach($faqs as $faq){
-			$html .= "".$faq->getQuestion()."";
+
+			$html .= '<p>Question: <a href="'.Mage::getUrl('faq/details/',array('id'=>$faq->getId())).'">'.$faq->getQuestion().'</a><p>';		
+
 		}
-		$html = '...Thanks for all the fish!';
+			
 		return $html;
 	}
 	
@@ -26,11 +30,12 @@ class Infinity_Faq_Block_Topfaqs extends Mage_Core_Block_Abstract implements Mag
 	 */
 	protected function _getTopFaqs(){
 		
-		$config = Mage::getModel('faq/config')->getCollection()->load(0);
+		$config  = Mage::getModel('faq/config');
+    	$config->load(0);
 		
 		$pageSize = $config->getWidgetPageSize();
 		
-		$faqs = Mage::getModel('faq/faq')->getCollection()->addAttributeToSort('viewed', 'DESC')->setPage('1', $pageSize);
+		$faqs = Mage::getModel('faq/faq')->getCollection()->setOrder('views', 'DESC')->setPageSize($pageSize);
 		
 		return $faqs;
 	}
