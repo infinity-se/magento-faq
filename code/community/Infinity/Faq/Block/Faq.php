@@ -37,4 +37,19 @@ class Infinity_Faq_Block_Faq extends Mage_Core_Block_Template
 	return $config->getValue();
 
 	}
+	
+	public function getRequestStatus(){
+		
+		$model  = Mage::getModel('faq/config');
+    	$model->load(0);
+		
+		$status = $model->getAsk();
+		
+		if($status == 1){
+			return true;
+		}else{
+			return false;
+		}
+		
+	}
 }

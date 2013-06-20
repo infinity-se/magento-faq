@@ -7,7 +7,7 @@
 * @copyright  Copyright (c) 2013 Matthew Gribben
 * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
 */
-class Infinity_Faq_Block_Faq extends Mage_Core_Block_Abstract implements Mage_Widget_Block_Interface
+class Infinity_Faq_Block_Topfaqs extends Mage_Core_Block_Abstract implements Mage_Widget_Block_Interface
 {
 	
 	protected function _toHtml()
@@ -17,7 +17,7 @@ class Infinity_Faq_Block_Faq extends Mage_Core_Block_Abstract implements Mage_Wi
 		foreach($faqs as $faq){
 			$html .= "".$faq->getQuestion()."";
 		}
-		$html = '...';
+		$html = '...Thanks for all the fish!';
 		return $html;
 	}
 	

@@ -35,7 +35,7 @@ class Infinity_Faq_RequestController extends Mage_Core_Controller_Front_Action {
     	
     	$mail = Mage::getModel('core/email');
     	$mail->setToName(Mage::getModel('faq/config')->getEmailSubmit());
-    	$mail->setToEmail($email);
+    	$mail->setToEmail(Mage::getModel('faq/config')->getEmailSubmit());
     	$mail->setBody('Mail Text / Mail Content');
     	$mail->setSubject('An FAQ request has been submitted');
     	$mail->setFromEmail($email);
@@ -45,7 +45,14 @@ class Infinity_Faq_RequestController extends Mage_Core_Controller_Front_Action {
     	try {
     		$mail->send();
     		Mage::getSingleton('core/session')->addSuccess('Your request has been sent');
-    		$this->_redirectUrl(Mage::getBaseUrl());
+    		
+    		$url = Mage::getUrl('faq/');
+    		 
+    		$cookie = Mage::getSingleton('core/cookie');
+    		$cookie->set('faqrequest', 'sent' ,time()+86400,'/');
+    		 
+    		$this->_redirectUrl($url);
+    		
     	}catch(Exception $e){
     		
     		var_dump($e);

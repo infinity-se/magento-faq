@@ -26,7 +26,8 @@
 		echo "Answer <p>".$answer."</p>";
 
 	}
-	
-	echo $this->getChildHtml('faqRequest');
+	if($this->getRequestStatus() === true){
+		echo $this->getChildHtml('faqRequest');
+	}
 ?>
 
