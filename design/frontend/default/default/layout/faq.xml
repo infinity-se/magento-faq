@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+    <default>
+    </default>
+    <faq_index_index>
+        <reference name="content">
+            <block type="faq/faq" name="faq" template="faq/faq.phtml" >
+            	<block type="faq/request" name="faqRequest" template="faq/request.phtml" />
+            </block>
+        </reference>
+    </faq_index_index>
+
+    <faq_details_index>
+        <reference name="content">
+            <block type="faq/details" name="details" template="faq/details.phtml" />
+        </reference>
+    </faq_details_index>
+    
+    <faq_request_index>
+        <reference name="content">
+            <block type="faq/request" name="request" template="faq/request.phtml" />
+        </reference>
+    </faq_request_index>
+</layout> 

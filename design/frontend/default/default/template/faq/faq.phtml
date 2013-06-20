@@ -1,0 +1,33 @@
+<?php
+	echo "<h1>".$this->getFaqTitle()."</h1>";
+
+	$faqs = $this->getfaqs();
+	
+
+?>
+
+<?php
+
+	foreach($faqs as $faq){
+
+		$url = $this->getUrl('faq/details/',array('id'=>$faq->getFaqId()));
+		
+		$answer = strip_tags($faq->getAnswer());
+		
+		if (strlen($answer) > 50) {
+			// truncate string
+			$stringCut = substr($answer, 0, 50);
+			
+			// make sure it ends in a word
+			$answer = substr($stringCut, 0, strrpos($stringCut, ' ')).'... <a href="'.$url.'">Read More</a>';
+		}
+
+		echo "Question <h2><a href='".$url."'>".$faq->getQuestion()."</a></h2>";
+		echo "Answer <p>".$answer."</p>";
+
+	}
+	if($this->getRequestStatus() === true){
+		echo $this->getChildHtml('faqRequest');
+	}
+?>
+

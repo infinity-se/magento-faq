@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<config>
+	<modules>
+		<Infinity_Faq>
+		<version>0.0.1</version>
+		</Infinity_Faq>
+	</modules>
+	
+	<frontend>
+	
+	</frontend>
+	
+	<admin>
+		<routers>
+			<faq>
+				<use>admin</use>
+				<args>
+					<module>Infinity_Faq</module>
+					<frontName>faq</frontName>
+				</args>
+			</faq>
+		</routers>
+	</admin>
+	
+	<adminhtml>
+		<menu>
+			<faq module="faq">
+				<title>Faq</title>
+				<sort_order>71</sort_order>
+				<children>
+					<faq module="faq">
+						<title>Manage Items</title>
+						<sort_order>0</sort_order>
+						<action>faq/adminhtml_faq</action>
+					</faq>
+					<conf module="faq">
+						<title>FAQ Config</title>
+						<sort_order>1</sort_order>
+						<action>faq/adminhtml_config</action>
+					</conf>
+				</children>
+			</faq>
+		</menu>
+		<acl>
+			<resources>
+				<all>
+					<title>Allow Everything</title>
+				</all>
+				<admin>
+					<children>
+						<Infinity_Faq>
+							<title>Faq Module</title>
+							<sort_order>10</sort_order>
+						</Infinity_Faq>
+					</children>
+				</admin>
+			</resources>
+		</acl>
+		<layout>
+			<updates>
+				<faq>
+					<file>faq.xml</file>
+				</faq>
+			</updates>
+		</layout>
+	</adminhtml>
+	
+	<global>
+		<models>
+			<faq>
+				<class>Infinity_Faq_Model</class>
+				<resourceModel>faq_mysql4</resourceModel>
+			</faq>
+			<faq_mysql4>
+				<class>Infinity_Faq_Model_Mysql4</class>
+				<entities>
+					<faq>
+						<table>infinity_faq</table>
+					</faq>
+					<config>
+						<table>infinity_faq_config</table>
+					</config>
+					<submitted>
+						<table>infinity_faq_submitted</table>
+					</submitted>
+				</entities>
+			</faq_mysql4>
+		</models>
+		<events>
+	      <infinity_faq_block_details>
+	        <observers>
+	          <infinity_faq_block_details_observer>
+	            <type>singleton</type>
+	            <class>Infinity_Faq_Observers_Details_Observer</class>
+	            <method>registerView</method>
+	          </infinity_faq_block_details_observer>
+	        </observers>
+	      </infinity_faq_block_details>   
+	      <infinity_faq_count_helpful>
+		      <observers>
+		      	<infinity_faq_count_yes_record>
+		            <type>singleton</type>
+		            <class>Infinity_Faq_Observers_Count_Observer</class>
+		            <method>registerHelpful</method>
+				</infinity_faq_count_yes_record>
+		      </observers>
+	      </infinity_faq_count_helpful>
+	      <infinity_faq_count_not_helpful>
+		      <observers>
+		      	<infinity_faq_count_no_record>
+		            <type>singleton</type>
+		            <class>Infinity_Faq_Observers_Count_Observer</class>
+		            <method>registerNotHelpful</method>
+				</infinity_faq_count_no_record>
+		      </observers>
+	      </infinity_faq_count_not_helpful> 
+	    </events>
+		<resources>
+			<faq_setup>
+				<setup>
+					<module>Infinity_Faq</module>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</faq_setup>
+			<faq_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</faq_write>
+			<faq_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</faq_read>
+		</resources>
+		<blocks>
+			<faq>
+				<class>Infinity_Faq_Block</class>
+			</faq>
+		</blocks>
+		<helpers>
+			<faq>
+				<class>Infinity_Faq_Helper</class>
+			</faq>
+		</helpers>
+	</global>
+</config>

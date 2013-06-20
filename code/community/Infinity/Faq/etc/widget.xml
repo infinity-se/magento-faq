@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<widgets>
+    <infinityfaq_topfaqs type="faq/topfaqs">
+        <name>FAQ: Top Questions</name>
+        <description type="desc">Adds a list of top FAQ questions</description>
+    </infinityfaq_topfaqs>
+</widgets>

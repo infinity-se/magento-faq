@@ -1,0 +1,26 @@
+<?php
+	echo "Question details page....";
+	
+	$question = $this->getFaqDetails()->getQuestion();
+	
+	$answer = $this->getFaqDetails()->getAnswer();
+?>
+
+<?php 
+
+	echo "<h1>".$question."</h1>";
+	echo "<h3>".$answer."</h3>";
+
+	
+	if($this->getHelpfulStatus() === true){
+		
+		$yesurl = $this->getUrl('faq/count/yes',array('id'=>$this->getRequest()->getParam('id')));
+		$nourl = $this->getUrl('faq/count/no',array('id'=>$this->getRequest()->getParam('id')));
+		
+		echo "<p> ".$this->getHelpfulCount()." People found this FAQ useful out of ".$this->getTotalViews()."";
+		
+		if($this->checkHelpSubmitted() === false){
+			echo "<p>Did you find this FAQ helpful? <a href='$yesurl'>Yes </a>/ <a href='$nourl'>No</a>";
+		}
+	}
+?>
