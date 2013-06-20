@@ -34,6 +34,7 @@ $installer->run("
 			  'ask' smallint(2) DEFAULT NULL,
 			  'rating' smallint(2) DEFAULT NULL,
 			  'showrating' smallint(2) DEFAULT NULL,
+			  'widget_page_size' int(11) DEFAULT '3',
 			  PRIMARY KEY ('config_id')
 			) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 			
