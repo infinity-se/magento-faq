@@ -85,6 +85,12 @@ class Infinity_Faq_Block_Adminhtml_Config_Edit_Tab_Form extends Mage_Adminhtml_B
       				),
       		),
       ));
+      
+      $fieldset->addField('widget_page_size', 'text', array(
+      		'label'     => Mage::helper('faq')->__('FAQ Items To Display In Widget'),
+      		'required'  => true,
+      		'name'      => 'widget_page_size',
+      ));
      
 			$config = Mage::getModel('faq/config')->load('0');
           $form->setValues($config);
