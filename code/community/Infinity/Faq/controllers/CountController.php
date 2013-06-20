@@ -13,6 +13,9 @@ class Infinity_Faq_CountController extends Mage_Core_Controller_Front_Action
 		
 	}
 	
+	/** This action is triggered when a user rates an FAQ item as helpful.
+	 * 
+	 */
     public function yesAction(){
     	
     	$id = $this->getRequest()->getParam('id');
@@ -32,12 +35,25 @@ class Infinity_Faq_CountController extends Mage_Core_Controller_Front_Action
 
     }
     
+    /** This action is triggered when a user rates an FAQ item as not helpful.
+     * 
+     */
     public function noAction(){
+    	
+    	$id = $this->getRequest()->getParam('id');
     	
     	$cookie = Mage::getSingleton('core/cookie');
     	$cookie->set('helpful'.$id, 'nothelpful' ,time()+86400,'/');
     	
-    	$this->_redirectUrl(Mage::getBaseUrl());
+    	$faq = Mage::getModel('faq/faq')->load($id);
+    	 
+    	$data = $faq->toArray();
+    	 
+    	Mage::dispatchEvent('infinity_faq_count_not_helpful', $data);
+    	
+    	$url = Mage::getUrl('faq/details/',array('id'=>$id));
+    	
+    	$this->_redirectUrl($url);
     	
     }
     

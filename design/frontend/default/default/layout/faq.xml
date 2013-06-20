@@ -4,7 +4,9 @@
     </default>
     <faq_index_index>
         <reference name="content">
-            <block type="faq/faq" name="faq" template="faq/faq.phtml" />
+            <block type="faq/faq" name="faq" template="faq/faq.phtml" >
+            	<block type="faq/request" name="faqRequest" template="faq/request.phtml" />
+            </block>
         </reference>
     </faq_index_index>
 

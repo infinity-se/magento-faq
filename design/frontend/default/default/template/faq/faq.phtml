@@ -3,8 +3,6 @@
 
 	$faqs = $this->getfaqs();
 	
-	echo $this->getPagerHtml();
-	
 
 ?>
 
@@ -29,6 +27,6 @@
 
 	}
 	
-	echo $this->getPagerHtml();
+	echo $this->getChildHtml('faqRequest');
 ?>
 

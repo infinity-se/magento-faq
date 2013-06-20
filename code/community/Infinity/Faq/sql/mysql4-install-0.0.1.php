@@ -16,6 +16,7 @@ $installer->run("
 			  'update_time' datetime DEFAULT NULL,
 			  'views' int(11) DEFAULT '0',
 			  'helpful_count' int(11) DEFAULT '0',
+			  'not_helpful_count' int(11) DEFAULT '0',
 			  PRIMARY KEY ('faq_id')
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 			

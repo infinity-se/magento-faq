@@ -16,6 +16,7 @@ $installer->run("
 			  'update_time' datetime DEFAULT NULL,
 			  'views' int(11) DEFAULT '0',
 			  'helpful_count' int(11) DEFAULT '0',
+			  'not_helpful_count' int(11) DEFAULT '0',
 			  PRIMARY KEY ('faq_id')
 			) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 			
@@ -39,6 +40,14 @@ $installer->run("
 		LOCK TABLES {$this->getTable('config')} WRITE;
 
 		INSERT INTO {$this->getTable('config')} VALUES (0,NULL,'faq/',NULL,1,1,1,1);
+		
+		DROP TABLE IF EXISTS {$this->getTable('submitted')};
+		CREATE TABLE `infinity_faq_submitted` (
+			  'submitted_id' int(11) NOT NULL,
+			  'name' varchar(45) DEFAULT NULL,
+			  'question' varchar(3000) DEFAULT NULL,
+			  PRIMARY KEY ('submitted_id')
+			) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 		
 		");

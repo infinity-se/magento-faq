@@ -99,13 +99,22 @@
 	      </infinity_faq_block_details>   
 	      <infinity_faq_count_helpful>
 		      <observers>
-		      	<infinity_faq_count_record>
+		      	<infinity_faq_count_yes_record>
 		            <type>singleton</type>
 		            <class>Infinity_Faq_Observers_Count_Observer</class>
 		            <method>registerHelpful</method>
-				</infinity_faq_count_record>
+				</infinity_faq_count_yes_record>
 		      </observers>
-	      </infinity_faq_count_helpful>  
+	      </infinity_faq_count_helpful>
+	      <infinity_faq_count_not_helpful>
+		      <observers>
+		      	<infinity_faq_count_no_record>
+		            <type>singleton</type>
+		            <class>Infinity_Faq_Observers_Count_Observer</class>
+		            <method>registerNotHelpful</method>
+				</infinity_faq_count_no_record>
+		      </observers>
+	      </infinity_faq_count_not_helpful> 
 	    </events>
 		<resources>
 			<faq_setup>
